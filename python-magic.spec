@@ -4,12 +4,13 @@
 #
 Name     : python-magic
 Version  : 0.4.13
-Release  : 3
+Release  : 4
 URL      : https://github.com/ahupp/python-magic/archive/0.4.13.tar.gz
 Source0  : https://github.com/ahupp/python-magic/archive/0.4.13.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
+Requires: python-magic-legacypython
 Requires: python-magic-python
 BuildRequires : file
 BuildRequires : file-dev
@@ -24,9 +25,18 @@ BuildRequires : setuptools
 [![PyPI version](https://badge.fury.io/py/python-magic.svg)](https://badge.fury.io/py/python-magic)
 [![Build Status](https://travis-ci.org/ahupp/python-magic.svg?branch=master)](https://travis-ci.org/ahupp/python-magic)
 
+%package legacypython
+Summary: legacypython components for the python-magic package.
+Group: Default
+
+%description legacypython
+legacypython components for the python-magic package.
+
+
 %package python
 Summary: python components for the python-magic package.
 Group: Default
+Requires: python-magic-legacypython
 
 %description python
 python components for the python-magic package.
@@ -36,8 +46,11 @@ python components for the python-magic package.
 %setup -q -n python-magic-0.4.13
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1490013840
+export SOURCE_DATE_EPOCH=1505058411
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -47,7 +60,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1490013840
+export SOURCE_DATE_EPOCH=1505058411
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -58,7 +71,10 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*

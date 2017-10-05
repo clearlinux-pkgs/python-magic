@@ -4,13 +4,14 @@
 #
 Name     : python-magic
 Version  : 0.4.13
-Release  : 5
+Release  : 6
 URL      : https://github.com/ahupp/python-magic/archive/0.4.13.tar.gz
 Source0  : https://github.com/ahupp/python-magic/archive/0.4.13.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
 Requires: python-magic-legacypython
+Requires: python-magic-python3
 Requires: python-magic-python
 BuildRequires : file
 BuildRequires : file-dev
@@ -28,6 +29,7 @@ BuildRequires : setuptools
 %package legacypython
 Summary: legacypython components for the python-magic package.
 Group: Default
+Requires: python-core
 
 %description legacypython
 legacypython components for the python-magic package.
@@ -37,9 +39,19 @@ legacypython components for the python-magic package.
 Summary: python components for the python-magic package.
 Group: Default
 Requires: python-magic-legacypython
+Requires: python-magic-python3
 
 %description python
 python components for the python-magic package.
+
+
+%package python3
+Summary: python3 components for the python-magic package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the python-magic package.
 
 
 %prep
@@ -50,7 +62,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505420875
+export SOURCE_DATE_EPOCH=1507170203
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -60,7 +72,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1505420875
+export SOURCE_DATE_EPOCH=1507170203
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -76,5 +88,8 @@ echo ----[ mark ]----
 /usr/lib/python2*/*
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*

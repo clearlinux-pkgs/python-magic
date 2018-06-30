@@ -4,7 +4,7 @@
 #
 Name     : python-magic
 Version  : 0.4.15
-Release  : 17
+Release  : 18
 URL      : https://github.com/ahupp/python-magic/archive/0.4.15.tar.gz
 Source0  : https://github.com/ahupp/python-magic/archive/0.4.15.tar.gz
 Summary  : No detailed summary available

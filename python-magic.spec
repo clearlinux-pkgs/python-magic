@@ -4,21 +4,18 @@
 #
 Name     : python-magic
 Version  : 0.4.15
-Release  : 25
+Release  : 26
 URL      : https://github.com/ahupp/python-magic/archive/0.4.15.tar.gz
 Source0  : https://github.com/ahupp/python-magic/archive/0.4.15.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
-Requires: python-magic-python3
-Requires: python-magic-license
-Requires: python-magic-python
+Requires: python-magic-license = %{version}-%{release}
+Requires: python-magic-python = %{version}-%{release}
+Requires: python-magic-python3 = %{version}-%{release}
+BuildRequires : buildreq-distutils3
 BuildRequires : file
 BuildRequires : file-dev
-BuildRequires : pbr
-BuildRequires : pip
-BuildRequires : python3-dev
-BuildRequires : setuptools
 
 %description
 # python-magic
@@ -36,7 +33,7 @@ license components for the python-magic package.
 %package python
 Summary: python components for the python-magic package.
 Group: Default
-Requires: python-magic-python3
+Requires: python-magic-python3 = %{version}-%{release}
 
 %description python
 python components for the python-magic package.
@@ -53,25 +50,33 @@ python3 components for the python-magic package.
 
 %prep
 %setup -q -n python-magic-0.4.15
+cd %{_builddir}/python-magic-0.4.15
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1530329808
-python3 setup.py build -b py3
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1576014408
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/python-magic
-cp LICENSE %{buildroot}/usr/share/doc/python-magic/LICENSE
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/python-magic
+cp %{_builddir}/python-magic-0.4.15/LICENSE %{buildroot}/usr/share/package-licenses/python-magic/a41bd5874a0b11123afd74123d0b6766273decd7
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -80,8 +85,8 @@ echo ----[ mark ]----
 %defattr(-,root,root,-)
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/python-magic/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/python-magic/a41bd5874a0b11123afd74123d0b6766273decd7
 
 %files python
 %defattr(-,root,root,-)

@@ -4,10 +4,10 @@
 #
 Name     : python-magic
 Version  : 0.4.15
-Release  : 28
+Release  : 29
 URL      : https://github.com/ahupp/python-magic/archive/0.4.15.tar.gz
 Source0  : https://github.com/ahupp/python-magic/archive/0.4.15.tar.gz
-Summary  : Python bindings to the magic library
+Summary  : File type identification using libmagic
 Group    : Development/Tools
 License  : MIT
 Requires: python-magic-license = %{version}-%{release}
@@ -18,9 +18,9 @@ BuildRequires : file
 BuildRequires : file-dev
 
 %description
-This module uses ctypes to access the libmagic file type
-identification library.  It makes use of the local magic database and
-supports both textual and MIME-type output.
+# python-magic
+[![PyPI version](https://badge.fury.io/py/python-magic.svg)](https://badge.fury.io/py/python-magic)
+[![Build Status](https://travis-ci.org/ahupp/python-magic.svg?branch=master)](https://travis-ci.org/ahupp/python-magic)
 
 %package license
 Summary: license components for the python-magic package.
@@ -43,7 +43,7 @@ python components for the python-magic package.
 Summary: python3 components for the python-magic package.
 Group: Default
 Requires: python3-core
-Provides: pypi(python-magic)
+Provides: pypi(python_magic)
 
 %description python3
 python3 components for the python-magic package.
@@ -58,8 +58,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583212970
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1583541310
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "

@@ -1,0 +1,6 @@
+{
+	"name": "python_magic",
+	"requires": [],
+	"license": "MIT",
+	"summary": "File type identification using libmagic"
+}

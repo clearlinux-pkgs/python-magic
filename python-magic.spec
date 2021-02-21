@@ -4,10 +4,10 @@
 #
 Name     : python-magic
 Version  : 0.4.22
-Release  : 37
+Release  : 38
 URL      : https://github.com/ahupp/python-magic/archive/0.4.22/python-magic-0.4.22.tar.gz
 Source0  : https://github.com/ahupp/python-magic/archive/0.4.22/python-magic-0.4.22.tar.gz
-Summary  : No detailed summary available
+Summary  : File type identification using libmagic
 Group    : Development/Tools
 License  : MIT
 Requires: python-magic-license = %{version}-%{release}
@@ -44,6 +44,7 @@ python components for the python-magic package.
 Summary: python3 components for the python-magic package.
 Group: Default
 Requires: python3-core
+Provides: pypi(python_magic)
 
 %description python3
 python3 components for the python-magic package.
@@ -58,7 +59,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1613749655
+export SOURCE_DATE_EPOCH=1613872242
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "

@@ -4,7 +4,7 @@
 #
 Name     : python-magic
 Version  : 0.4.22
-Release  : 39
+Release  : 40
 URL      : https://github.com/ahupp/python-magic/archive/0.4.22/python-magic-0.4.22.tar.gz
 Source0  : https://github.com/ahupp/python-magic/archive/0.4.22/python-magic-0.4.22.tar.gz
 Summary  : File type identification using libmagic
@@ -59,7 +59,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1613872242
+export SOURCE_DATE_EPOCH=1620165019
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "

@@ -4,7 +4,7 @@
 #
 Name     : python-magic
 Version  : 0.4.24
-Release  : 44
+Release  : 45
 URL      : https://github.com/ahupp/python-magic/archive/0.4.24/python-magic-0.4.24.tar.gz
 Source0  : https://github.com/ahupp/python-magic/archive/0.4.24/python-magic-0.4.24.tar.gz
 Summary  : File type identification using libmagic

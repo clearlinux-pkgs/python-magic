@@ -7,7 +7,7 @@
 #
 Name     : python-magic
 Version  : 0.4.27
-Release  : 60
+Release  : 61
 URL      : https://github.com/ahupp/python-magic/archive/0.4.27/python-magic-0.4.27.tar.gz
 Source0  : https://github.com/ahupp/python-magic/archive/0.4.27/python-magic-0.4.27.tar.gz
 Summary  : No detailed summary available
@@ -49,6 +49,7 @@ python components for the python-magic package.
 Summary: python3 components for the python-magic package.
 Group: Default
 Requires: python3-core
+Provides: pypi(python_magic)
 
 %description python3
 python3 components for the python-magic package.

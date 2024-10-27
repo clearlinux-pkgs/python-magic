@@ -7,7 +7,7 @@
 #
 Name     : python-magic
 Version  : 0.4.27
-Release  : 61
+Release  : 62
 URL      : https://github.com/ahupp/python-magic/archive/0.4.27/python-magic-0.4.27.tar.gz
 Source0  : https://github.com/ahupp/python-magic/archive/0.4.27/python-magic-0.4.27.tar.gz
 Summary  : No detailed summary available
